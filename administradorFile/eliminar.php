@@ -1,6 +1,7 @@
 <?php
 include '../getConnection.php';
 getDBConnection();
+
 if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
 
@@ -50,6 +51,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
                 </li>
             </ul>
         </nav>
+        <img src="../img/banner.png">
         <div class="container">
             <br>
         	<h4>Eliminar una Cuenta</h4>
@@ -62,17 +64,35 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
             <?php
             $connect = getDBConnection();
             $sql = "SELECT * FROM `users`";
+            if ($_GET['sort'] == 'nombre') {
+                $sql .= " ORDER BY nombre";
+            }
+            elseif ($_GET['sort'] == 'apellido') {
+                $sql .= " ORDER BY apellido";
+            }
+            elseif ($_GET['sort'] == 'numero') {
+                $sql .= " ORDER BY numero";
+            }
+            elseif($_GET['sort'] == 'correo') {
+                $sql .= " ORDER BY correo";
+            }
+            elseif($_GET['sort'] == 'area') {
+                $sql .= " ORDER BY area";
+            }
+            elseif($_GET['sort'] == 'estatus') {
+                $sql .= " ORDER BY estatus";
+            }
             $statement = $connect->prepare($sql);
             $statement->execute();
             if($statement->rowCount() > 0) {
                 echo "<table id='table' align='center'>";
                 echo "<tr class='table-dark' align='center'>";
-                echo "<th>Nombre</th>";
-                echo "<th>Apellido</th>";
-                echo "<th>Numero</th>";
-                echo "<th>Correo</th>";
-                echo "<th>Area</th>";
-                echo "<th>Estatus</th>";
+                echo "<th><a href='eliminar.php?sort=nombre'>Nombre</a></th>";
+                echo "<th><a href='eliminar.php?sort=apellido'>Apellido</a></th>";
+                echo "<th><a href='eliminar.php?sort=numero'>Numero</a></th>";
+                echo "<th><a href='eliminar.php?sort=correo'>Correo</a></th>";
+                echo "<th><a href='eliminar.php?sort=area'>Area</a></th>";
+                echo "<th><a href='eliminar.php?sort=estatus'>Estatus</a></th>";
                 echo "</tr>";
                 while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";

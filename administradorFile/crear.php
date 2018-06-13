@@ -3,7 +3,7 @@ include '../getConnection.php';
 getDBConnection();
 
 if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['numero']) && !empty($_POST['correo']) && !empty($_POST['puesto']) && !empty($_POST['userId']) && !empty($_POST['estatus']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['tipo'])) {
-
+    $
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $numero = $_POST['numero'];
@@ -114,8 +114,14 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                 </li>
             </ul>
         </nav>
+        <img src="../img/banner.png">
         <div class="container">
             <br>
+            <?php
+            if (isset($_POST['insert']) && (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['numero']) || empty($_POST['correo']) || empty($_POST['puesto']) || empty($_POST['userId']) || empty($_POST['estatus']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['tipo']))) {
+                echo '<h2 class="badge badge-pill badge-danger">Error</h2>';
+            }
+            ?>
         	<h4>Creacion de Cuentas</h4>
         	<form method="post">
                 <legend></legend>
@@ -131,13 +137,13 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                 <input class="form-control" name="puesto" type="text"><br>    
                 <label>Numero de Usuario:</label>                   
                 <input class="form-control" name="userId" type="text"><br>              
-                <label>Poscion: </label>                
+                <label>Posicion: </label>                
                 <select class="form-control" name="tipo">
-                    <option value="">Seleccione una Poscion</option>
+                    <option value="">Seleccione una Posicion</option>
                     <option value="ge">Administrador</option>
                     <option value="us">Solicitante</option>
                     <option value="ge">Lider de Analisis y Proyecto</option>
-                    <option value="ge">Aanalista</option>
+                    <option value="ge">Analista</option>
                     <option value="ge">Gerencia de Analisis</option>
                     <option value="ge">Vice Presidente</option>
                 </select><br>

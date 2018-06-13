@@ -9,10 +9,10 @@ getDBConnection();
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="../index.php">Gerencia</a>
+            <a class="navbar-brand" href="liderDeAnyPro.php">Lider</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarioFinal.php">Inicio</a>
+                    <a class="nav-link" href="liderDeAnyPro.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=".php">Analisis</a>
@@ -20,8 +20,12 @@ getDBConnection();
                 <li class="nav-item">
                     <a class="nav-link" href=".php">Proyectos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Logout</a>
+                </li>
             </ul>
         </nav>
+        <img src="../img/banner.png">
         <div class="container">
             <br>
             <h4>Bienvenido Lider de Analisis y Proyectos</h4>

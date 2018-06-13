@@ -28,6 +28,7 @@ getDBConnection();
                 </li>
             </ul>
         </nav>
+        <img src="../img/banner.png">
         <div class="container">
             <br>
             <h4>Bienvenido Administrador</h4><br><br>
