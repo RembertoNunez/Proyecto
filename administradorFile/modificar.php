@@ -1,6 +1,9 @@
 <?php
+// Establece Conexion con la base de datos
 include '../getConnection.php';
 getDBConnection();
+
+// Si el boton de modificar a sido selecionado y hay un nombre 
 if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != "") {
     $nombre = $_POST['nombre'];
     $estatus = $_POST['estatus'];
@@ -8,6 +11,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
     $sql = "SELECT * FROM `users` WHERE nombre='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute();
+    // Si el nombre ingresado esta en la base de datos sera modificado si no mostrara un error
     if($statement->rowCount() > 0) {
         $sql = "UPDATE `users` SET `estatus`='$estatus' WHERE `users`.`nombre`='$nombre';";
     }
@@ -30,7 +34,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
     </style>
 </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand"  href="../moduloDeSeguridad/administrador.php">Administrador</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -110,7 +114,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
                 echo "</table> <br/><br/>";
             }
             else {
-                echo "0 results";
+                echo "0 resultados";
             }
             ?>
         </div>

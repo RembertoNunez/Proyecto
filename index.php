@@ -1,4 +1,5 @@
 <?php
+// Conexion con la base de datos
 include 'getConnection.php';
 getDBConnection();
 ?>
@@ -8,7 +9,7 @@ getDBConnection();
         <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="index.php">Gerencia</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">

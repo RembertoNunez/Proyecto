@@ -1,7 +1,9 @@
 <?php
+//Incluye Conexion
 include '../getConnection.php';
 getDBConnection();
 
+// Inserta la informacion de la forma a la base de datos si los parametros son cumplidos
 if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['numero']) && !empty($_POST['correo']) && !empty($_POST['puesto']) && !empty($_POST['userId']) && !empty($_POST['estatus']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['tipo'])) {
     $
     $nombre = $_POST['nombre'];
@@ -32,6 +34,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
             }
         </script>
         <script>
+        // Verifica que el nombre de usuario este habilitado
             $(document).ready( function(){
                 $("#user").change(function()
                 {
@@ -61,6 +64,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                     });//ajax
                 });
 
+                // Verfica que la informacion ingresada fue guardada
                  $("#Submit").click(function() {
                     document.getElementById("setInfo").style.fontSize = "24px";
                     if(error == false) {
@@ -76,7 +80,8 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                         $("#setInfo").html("Fill in Blank!");
                     }
                 });
-
+                
+                // Asegura que la segunda contrasena ingresada sea igual que la primera
                  $("#repassword").change(function()
                 {
                     if($("#password").val() != $("#repassword").val()) {
@@ -94,7 +99,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
         </script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand"  href="../moduloDeSeguridad/administrador.php">Administrador</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -118,6 +123,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
         <div class="container">
             <br>
             <?php
+            // Muestra un error en la parte superior si hay algo sin llenar en la forma
             if (isset($_POST['insert']) && (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['numero']) || empty($_POST['correo']) || empty($_POST['puesto']) || empty($_POST['userId']) || empty($_POST['estatus']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['tipo']))) {
                 echo '<h2 class="badge badge-pill badge-danger">Error</h2>';
             }

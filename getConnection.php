@@ -1,12 +1,13 @@
 <?php
 function getDBConnection() {
-    //C9 db info
+    //Informacion de base de datos
     $host = "localhost";
     $db = "proyecto_practica";
     $user = "root";
     $pass = "";
     $charset ="utf8mb4";
     
+    //Estableciendo Conexion
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
     $opt = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

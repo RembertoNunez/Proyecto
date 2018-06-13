@@ -1,7 +1,9 @@
 <?php
+// Establece Conexion con la base de datos
 include '../getConnection.php';
 getDBConnection();
 
+// Si el boton de borrar a sido selecionado y hay un nombre 
 if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
 
@@ -9,11 +11,12 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
     $sql = "SELECT * FROM `users` WHERE nombre='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute();
+    // Si el nombre ingresado esta en la base de datos sera borrado si no mostrara un error
     if($statement->rowCount() > 0) {
         $sql = "DELETE FROM `users` WHERE nombre='$nombre'";
     }
     else {
-        echo "<h3>ERROR</h3>";
+        echo "<h3 class='badge badge-pill badge-danger'>ERROR</h3>";
     }
     $statement = $connect->prepare($sql);
     $statement->execute();
@@ -31,7 +34,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
     </style>
 </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="../moduloDeSeguridad/administrador.php">Administrador</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -62,6 +65,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
         	</form><br>
             <h6 align="center">Usurarios</h6>
             <?php
+            // SQL code para agarrar informacion de la base de datos
             $connect = getDBConnection();
             $sql = "SELECT * FROM `users`";
             if ($_GET['sort'] == 'nombre') {
@@ -82,14 +86,20 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
             elseif($_GET['sort'] == 'estatus') {
                 $sql .= " ORDER BY estatus";
             }
+            elseif($_GET['sort'] == 'id') {
+                $sql .= " ORDER BY id";
+            }
             $statement = $connect->prepare($sql);
             $statement->execute();
+            
+            // Crea tabla con la informacion conseguida de la base de datos
             if($statement->rowCount() > 0) {
                 echo "<table id='table' align='center'>";
                 echo "<tr class='table-dark' align='center'>";
                 echo "<th><a href='eliminar.php?sort=nombre'>Nombre</a></th>";
                 echo "<th><a href='eliminar.php?sort=apellido'>Apellido</a></th>";
-                echo "<th><a href='eliminar.php?sort=numero'>Numero</a></th>";
+                echo "<th><a href='eliminar.php?sort=id'>Id Usuario</a></th>";
+                echo "<th><a href='eliminar.php?sort=numero'>Telefono</a></th>";
                 echo "<th><a href='eliminar.php?sort=correo'>Correo</a></th>";
                 echo "<th><a href='eliminar.php?sort=area'>Area</a></th>";
                 echo "<th><a href='eliminar.php?sort=estatus'>Estatus</a></th>";
@@ -98,6 +108,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
                     echo "<tr>";
                     echo "<td>" . $row["nombre"]. "</td>";
                     echo "<td>" . $row["apellido"]. "</td>";
+                    echo "<td>" . $row["id"]. "</td>";
                     echo "<td>" . $row["numero"]. "</td>";
                     echo "<td>" . $row["correo"]. "</td>";
                     echo "<td>" . $row["puesto"]. "</td>";
@@ -106,7 +117,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
                 echo "</table> <br/><br/>";
             }
             else {
-                echo "0 results";
+                echo "0 resultados";
             }
             ?>
         </div>
