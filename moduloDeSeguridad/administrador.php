@@ -1,6 +1,6 @@
 <?php
-include '../getConnection.php';
-getDBConnection();
+session_start();
+include '../functions/perfil.php';
 ?>
 <html>
     <head>
@@ -33,6 +33,10 @@ getDBConnection();
             <br>
             <h4>Bienvenido Administrador</h4><br><br>
             <p>En el perifl de administrador usted puede crear cuentras para los usuarios al igaul que eliminarlas o modificarlas</p>
+            <h5>Su Perfil</h5>
+            <?php
+            perfil();
+            ?>
         </div>
     </body>
 </html>

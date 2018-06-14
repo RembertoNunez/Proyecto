@@ -1,6 +1,6 @@
 <?php
-include '../getConnection.php';
-getDBConnection();
+session_start();
+include '../functions/perfil.php';
 ?>
 <html>
     <head>
@@ -30,8 +30,12 @@ getDBConnection();
         </nav>
         <!--<img src="../img/banner.png">-->
         <div class="container">
-            <h4>Bienvenido Vice Presidente</h4>
-            
+            <h4>Bienvenido Vice Presidente</h4><br/>
+            <h5>Su Perfil</h5>
+            <?php
+            perfil();
+            ?>
+            <p class='text-primary'>Algun Cambio Que Quiera Hacer Hable Con El Administrador</p>
         </div>
     </body>
 </html>

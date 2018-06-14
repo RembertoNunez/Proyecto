@@ -1,6 +1,6 @@
 <?php
 // Establece Conexion con la base de datos
-include '../getConnection.php';
+include '../functions/getConnection.php';
 getDBConnection();
 
 // Si el boton de borrar a sido selecionado y hay un nombre 

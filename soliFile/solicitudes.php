@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../getConnection.php';
+include '../functions/getConnection.php';
 getDBConnection();
 
 ?>

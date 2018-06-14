@@ -1,11 +1,10 @@
 <?php
 //Incluye Conexion
-include '../getConnection.php';
+include '../functions/getConnection.php';
 getDBConnection();
 
 // Inserta la informacion de la forma a la base de datos si los parametros son cumplidos
 if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['numero']) && !empty($_POST['correo']) && !empty($_POST['puesto']) && !empty($_POST['estatus']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['tipo'])) {
-    $
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $numero = $_POST['numero'];
@@ -43,7 +42,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                     // alert("Enter name please.");
                     $.ajax({
                         type: "GET",
-                        url: "checkDeUser.php",
+                        url: "../functions/checkDeUser.php",
                         dataType: "json",
                         data: { "username": $("#user").val() },
                         success: function(data,status) {
@@ -145,12 +144,12 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                 <label>Posicion: </label>                
                 <select class="form-control" name="tipo">
                     <option value="">Seleccione una Posicion</option>
-                    <option value="ge">Administrador</option>
+                    <option value="ad">Administrador</option>
                     <option value="us">Solicitante</option>
-                    <option value="ge">Lider de Analisis y Proyecto</option>
-                    <option value="ge">Analista</option>
-                    <option value="ge">Gerencia de Analisis</option>
-                    <option value="ge">Vice Presidente</option>
+                    <option value="li">Lider de Analisis y Proyecto</option>
+                    <option value="an">Analista</option>
+                    <option value="ga">Gerencia de Analisis</option>
+                    <option value="vp">Vice Presidente</option>
                 </select><br>
                 <label>Estatus: </label>                
                 <select class="form-control" name="estatus">

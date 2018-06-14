@@ -1,6 +1,7 @@
 <?php
 // Conexion con la base de datos
-include 'getConnection.php';
+session_start();
+include './functions/getConnection.php';
 getDBConnection();
 ?>
 <html>
@@ -21,7 +22,7 @@ getDBConnection();
         <div class="container">
             <br>
             <h3>Porfavor ingrese sus credenciales</h3>
-            <form method="post" action="verify.php">
+            <form method="post" action="./functions/verify.php">
                 <div class="form-group">
                     <label for="InputUsername">Usurario</label>
                     <input type="text" name="username" class="form-control" placeholder="Usurario">

@@ -1,6 +1,6 @@
 <?php
-include '../getConnection.php';
-getDBConnection();
+session_start();
+include '../functions/perfil.php';
 ?>
 <html>
     <head>
@@ -15,10 +15,10 @@ getDBConnection();
                     <a class="nav-link" href="liderDeAnyPro.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=".php">Analisis</a>
+                    <a class="nav-link" href="../liderFile/analisis.php">Analisis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=".php">Proyectos</a>
+                    <a class="nav-link" href="../liderFile/proyecto.php">Proyectos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../index.php">Logout</a>
@@ -28,8 +28,12 @@ getDBConnection();
         <!--<img src="../img/banner.png">-->
         <div class="container">
             <br>
-            <h4>Bienvenido Lider de Analisis y Proyectos</h4>
-            
+            <h4>Bienvenido Lider de Analisis y Proyectos</h4><br/>
+            <h5>Su Perfil</h5>
+            <?php
+            perfil();
+            ?>
+            <p class='text-primary'>Algun Cambio Que Quiera Hacer Hable Con El Administrador</p>
         </div>
     </body>
 </html>

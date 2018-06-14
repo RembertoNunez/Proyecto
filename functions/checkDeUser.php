@@ -1,6 +1,6 @@
 <?php
 
-include '../getConnection.php';
+include '../functions/getConnection.php';
 
 $conn = getDBConnection();
 
