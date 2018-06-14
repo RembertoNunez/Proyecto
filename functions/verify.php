@@ -19,7 +19,7 @@ if($user['tipo'] == "ad" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';";
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/administrador.php');
@@ -29,7 +29,7 @@ else if($user['tipo'] == "us" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';";
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/usuarioFinal.php');
@@ -39,7 +39,7 @@ else if($user['tipo'] == "li" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';"; 
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';"; 
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/liderDeAnyPro.php');
@@ -49,7 +49,7 @@ else if($user['tipo'] == "an" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';";
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/analista.php');
@@ -59,7 +59,7 @@ else if($user['tipo'] == "ga" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';";
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/gerenciaAnalisis.php');
@@ -69,7 +69,7 @@ else if($user['tipo'] == "vp" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time' WHERE `users`.`username`='$nombre';";
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
     header('Location: ../moduloDeSeguridad/vpPerfil.php');

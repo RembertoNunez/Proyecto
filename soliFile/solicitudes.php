@@ -20,7 +20,7 @@ getDBConnection();
                     <a class="nav-link" href="solicitudes.php">Solicitudes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php" align="right">Logout</a>
+                    <a class="nav-link" href="../functions/logoff.php" align="right">Logout</a>
                 </li>
             </ul>
         </nav>

@@ -115,7 +115,10 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                     <a class="nav-link" href="modificar.php">Modificar Cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php" align="right">Logout</a>
+                    <a class="nav-link" href="perfil.php">Mi Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../functions/logoff.php" align="right">Logout</a>
                 </li>
             </ul>
         </nav>

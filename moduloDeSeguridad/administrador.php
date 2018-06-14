@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../functions/perfil.php';
+include '../functions/getConnection.php';
 ?>
 <html>
     <head>
@@ -24,7 +24,10 @@ include '../functions/perfil.php';
                     <a class="nav-link" href="../administradorFile/modificar.php">Modificar Cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php" align="right">Logout</a>
+                    <a class="nav-link" href="../administradorFile/perfil.php">Mi Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../functions/logoff.php" align="right">Logout</a>
                 </li>
             </ul>
         </nav>
@@ -32,10 +35,24 @@ include '../functions/perfil.php';
         <div class="container">
             <br>
             <h4>Bienvenido Administrador</h4><br><br>
-            <p>En el perifl de administrador usted puede crear cuentras para los usuarios al igaul que eliminarlas o modificarlas</p>
-            <h5>Su Perfil</h5>
+            <h5>Estos son los Usuarios Activo</h5>
             <?php
-            perfil();
+            $connect = getDBConnection();
+            $sql = "SELECT * FROM `users` WHERE estatus = 'Activo'";
+            $statement = $connect->prepare($sql);
+            $statement->execute();
+            $i = 1;
+            if($statement->rowCount() > 0) {
+                while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<h5>$i</h5>";
+                    echo "<p>Usuario: " . $row['nombre'] . " " . $row['apellido'] . "</p>"; 
+                    echo "<p>Ingreso: " . $row['ultimoLogin'] . "</p>";
+                    $i++;
+                }
+            }
+            else {
+                echo "No hay Usuarios Activos";
+            }
             ?>
         </div>
     </body>

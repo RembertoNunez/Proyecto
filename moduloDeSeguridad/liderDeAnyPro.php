@@ -21,7 +21,7 @@ include '../functions/perfil.php';
                     <a class="nav-link" href="../liderFile/proyecto.php">Proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php">Logout</a>
+                    <a class="nav-link" href="../functions/logoff.php">Logout</a>
                 </li>
             </ul>
         </nav>

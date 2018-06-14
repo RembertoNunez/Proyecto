@@ -9,13 +9,22 @@ include '../functions/perfil.php';
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="usuarioFinal.php">Solicitante</a></a>
+            <a class="navbar-brand" href="../moduloDeSeguridad/administrador.php">Administrador</a></a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarioFinal.php">Inicio</a>
+                    <a class="nav-link" href="../moduloDeSeguridad/administrador.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../soliFile/solicitudes.php">Solicitudes</a>
+                    <a class="nav-link" href="crear.php">Crear Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="eliminar.php">Eliminar Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="modificar.php">Modificar Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="perfil.php">Mi Perfil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../functions/logoff.php" align="right">Logout</a>
@@ -25,12 +34,11 @@ include '../functions/perfil.php';
         <!--<img src="../img/banner.png">-->
         <div class="container">
             <br>
-            <h4>Bienvenido Solicitante</h4><br/>
+            <h4>Administrador</h4><br><br>
             <h5>Su Perfil</h5>
             <?php
             perfil();
             ?>
-            <p class='text-primary'>Algun Cambio Que Quiera Hacer Hable Con El Administrador</p>
         </div>
     </body>
 </html>

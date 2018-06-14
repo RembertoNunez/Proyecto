@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../functions/perfil.php';
+include '../functions/getConnection.php';
+getDBConnection();
 ?>
 <html>
     <head>
@@ -9,19 +10,19 @@ include '../functions/perfil.php';
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="vpPerfil.php">VP</a>
+            <a class="navbar-brand" href="../moduloDeSeguridad/vpPerfil.php">VP</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="vpPerfil.php">Inicio</a>
+                    <a class="nav-link" href="../moduloDeSeguridad/vpPerfil.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../vpFile/analisis.php">Analisis</a>
+                    <a class="nav-link" href="analisis.php">Analisis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../vpFile/proyecto.php">Proyectos</a>
+                    <a class="nav-link" href="proyecto.php">Proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../vpFile/estado.php">Estatus de Requerimientos</a>
+                    <a class="nav-link" href="estado.php">Estatus de Requerimientos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../functions/logoff.php">Logout</a>
@@ -30,12 +31,12 @@ include '../functions/perfil.php';
         </nav>
         <!--<img src="../img/banner.png">-->
         <div class="container">
-            <h4>Bienvenido Vice Presidente</h4><br/>
-            <h5>Su Perfil</h5>
+            <br>
+            <h4>Bienvenido al Analisis</h4><br/>
+            <h5>Estos son los Analisis</h5>
             <?php
-            perfil();
+            
             ?>
-            <p class='text-primary'>Algun Cambio Que Quiera Hacer Hable Con El Administrador</p>
         </div>
     </body>
 </html>
