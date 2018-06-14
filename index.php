@@ -17,7 +17,7 @@ getDBConnection();
                 </li>
             </ul>
         </nav>
-        <img src="./img/banner.png">
+        <!--<img src="./img/banner.png">-->
         <div class="container">
             <br>
             <h3>Porfavor ingrese sus credenciales</h3>

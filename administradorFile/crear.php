@@ -4,7 +4,7 @@ include '../getConnection.php';
 getDBConnection();
 
 // Inserta la informacion de la forma a la base de datos si los parametros son cumplidos
-if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['numero']) && !empty($_POST['correo']) && !empty($_POST['puesto']) && !empty($_POST['userId']) && !empty($_POST['estatus']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['tipo'])) {
+if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['numero']) && !empty($_POST['correo']) && !empty($_POST['puesto']) && !empty($_POST['estatus']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['tipo'])) {
     $
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -35,6 +35,7 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
         </script>
         <script>
         // Verifica que el nombre de usuario este habilitado
+        error = true;
             $(document).ready( function(){
                 $("#user").change(function()
                 {
@@ -48,13 +49,13 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                         success: function(data,status) {
                             // alert(data);
                             if(!data) {
-                                document.getElementById("username").style.color = "#008000";
-                                $("#username").html("Available");
+                                document.getElementById("username");
+                                $("#username").html("Habilitado").addClass("text-success");
                                 error = false;
                             }
                             else {
-                                document.getElementById("username").style.color = "#ff0000";
-                                $("#username").html("Username Already Taken");
+                                document.getElementById("username");
+                                $("#username").html("Ese Nombre de Usurario ya esta Utilizado").addClass("text-danger");
                                 error = true;
                             }
                         },
@@ -68,16 +69,16 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                  $("#Submit").click(function() {
                     document.getElementById("setInfo").style.fontSize = "24px";
                     if(error == false) {
-                        document.getElementById("setInfo").style.color = "#008000";
-                        $("#setInfo").html("Record Added!");
+                        document.getElementById("setInfo");
+                        $("#setInfo").html("Agregado!").addClass("text-success");
                     }
                     else if(error == true){
-                        document.getElementById("setInfo").style.color = "#ff0000";
-                        $("#setInfo").html("Fix Error!");
+                        document.getElementById("setInfo");
+                        $("#setInfo").html("Hay Error!").addClass("text-danger");
                     }
                     else{
-                        document.getElementById("setInfo").style.color = "#ff0000";
-                        $("#setInfo").html("Fill in Blank!");
+                        document.getElementById("setInfo");
+                        $("#setInfo").html("Complete la Forma").addClass("text-danger");
                     }
                 });
                 
@@ -85,13 +86,13 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                  $("#repassword").change(function()
                 {
                     if($("#password").val() != $("#repassword").val()) {
-                        document.getElementById("rePassword").style.color = "#ff0000";
-                        $("#rePassword").html("Password Does Not Match");
+                        document.getElementById("rePassword");
+                        $("#rePassword").html("Password no Coincide").addClass("text-danger");
                         error = true;
                     }
                     else {
-                        document.getElementById("rePassword").style.color = "#008000";
-                        $("#rePassword").html("Match");
+                        document.getElementById("rePassword");
+                        $("#rePassword").html("Coincide").addClass("text-success");
                         error = false;
                     }
                 });
@@ -119,12 +120,12 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                 </li>
             </ul>
         </nav>
-        <img src="../img/banner.png">
+        <!--<img src="../img/banner.png">-->
         <div class="container">
             <br>
             <?php
             // Muestra un error en la parte superior si hay algo sin llenar en la forma
-            if (isset($_POST['insert']) && (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['numero']) || empty($_POST['correo']) || empty($_POST['puesto']) || empty($_POST['userId']) || empty($_POST['estatus']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['tipo']))) {
+            if (isset($_POST['insert']) && (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['numero']) || empty($_POST['correo']) || empty($_POST['puesto']) || empty($_POST['estatus']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['tipo']))) {
                 echo '<h2 class="badge badge-pill badge-danger">Error</h2>';
             }
             ?>
@@ -141,8 +142,6 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                 <input class="form-control" name="correo" type="text"><br>
                 <label>Area:</label>                   
                 <input class="form-control" name="puesto" type="text"><br>    
-                <label>Numero de Usuario:</label>                   
-                <input class="form-control" name="userId" type="text"><br>              
                 <label>Posicion: </label>                
                 <select class="form-control" name="tipo">
                     <option value="">Seleccione una Posicion</option>
@@ -160,12 +159,13 @@ if(isset($_POST['insert']) && !empty($_POST['nombre']) && !empty($_POST['apellid
                     <option value="Inactivo">Inactivo</option>
                 </select><br>
                 <lable>Nombre de Ususario:</label>
-                <input class="form-control" type="text" name="username" id = "user"> <span class="text-danger" id="username"></span> <br>
+                <input class="form-control" type="text" name="username" id = "user"> <span id="username"></span> <br>
                 <label>Contrasena: </label>            
                 <input class="form-control" type="password" name="password" id = "password"><br>
                 <label>Reentrar Contrasena: </label>   
-                <input  class="form-control" type="password" id = "repassword"> <span class="badge badge-success" id="rePassword"></span> <br><br>
-                <input type="submit" name='insert' value="Registrar" class="btn btn-primary">
+                <input  class="form-control" type="password" id = "repassword"> <span id="rePassword"></span> <br><br>
+                <input type="submit" id="Submit" name='insert' value="Registrar" class="btn btn-primary">
+                <div id="setInfo"></div>
         	</form>
         </div>
 	</body>

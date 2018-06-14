@@ -27,7 +27,7 @@ getDBConnection();
         <div class="container">
             <br>
             <h4>Bienvenido a sus Solicitudes</h4><br/><br/>
-            <h6>Estas son sus Solicitudes</h6><br/>
+            <h5>Estas son sus Solicitudes</h5><br/>
             <?php
             echo "<p>Numero de Usurario: " . $_SESSION['userId'] . "</p>";
             $connect = getDBConnection();
@@ -39,6 +39,12 @@ getDBConnection();
                     if($_SESSION['id'] == $row['numDeSys']) {
                         echo "<p>Usted es el Usurario: " . $_SESSION['username'] . "</p>";
                         echo "<p>Fecha de Solicitud: " . $row["fechaSoliSys"] . "</p>";
+                        echo "<p>Estado: " . $row["estatus"] . "</p>";
+                        $porce = $row['porceAvance'];
+                        echo "<p>Porcentaje de Avance</p>";
+                        echo "<div class='progress'>
+                                <div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100' style='width: $porce%'>$porce%</div>
+                            </div>";
                     }
                 }
             }
