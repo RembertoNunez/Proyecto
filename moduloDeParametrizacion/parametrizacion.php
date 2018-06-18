@@ -1,32 +1,38 @@
 <?php
+session_start();
+include '../functions/perfil.php';
 
 ?>
 <html>
     <head>
-        <meta charset=utf-8 />
-        <meta name="description" content="description">
-        <title>Gerencia de Analisis/Parametrizacion</title>
-        <link rel="stylesheet" media="screen" href="css/style.css" />
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+        <title>Gerencia de Analisis</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     </head>
     <body>
-        <header>
-        <h1>
-            Parametrizacion
-        </h1>
-        <div class="opcionIndex">
-        <ul id="nav">
-            <li><a href="../index.php">Inicio</a></li>
-        	<li><a href="solicitantes.php">Solicitantes</a></li>
-        	<li><a href="lideresDeAnalisis.php">Lideres de Analisis</a></li>
-        	<li><a href="gerenciaDeAnalisis.php">Gerencia de Analisis</a></li>
-        	<li><a href="vps.php">VP's</a></li>
-        </ul>
-        </div>
-        </header>
-        <div class="cuerpoReportes">
-            <h2>Bienvendido a seccion de Parametrizacion</h2>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="parametrizacion.php">Parametrizacion</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="parametrizacion.php">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../paraFile/creaProyecto.php">Crear Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../paraFile/creaRequeri.php">Crear Requerimientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../functions/logoff.php">Logout</a>
+                </li>
+            </ul>
+        </nav>
+        <!--<img src="../img/banner.png">-->
+        <div class="container">
+            <h4>Bienvenido</h4><br/>
+            <h5>Titulo</h5>
+            <?php
+            
+            ?>
         </div>
     </body>
 </html>

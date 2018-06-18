@@ -13,65 +13,140 @@ $stmt->execute($data);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $current_time = date('Y-m-d H:i:s');
 
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+       $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
+$_SESSION['ip'] = get_client_ip();
+$ip = get_client_ip();
+
 
 // Verifica el tipo de cuenta del usuario para ingresarlo a su respectivo Dashboard
 if($user['tipo'] == "ad" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
     $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/administrador.php');
 } 
 
 else if($user['tipo'] == "us" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
     $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/usuarioFinal.php');
 }
 
 else if($user['tipo'] == "li" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
-    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';"; 
+    $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/liderDeAnyPro.php');
 }
 
 else if($user['tipo'] == "an" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
     $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/analista.php');
 }
 
 else if($user['tipo'] == "ga" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
     $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/gerenciaAnalisis.php');
 }
 
 else if($user['tipo'] == "vp" && $user['username'] == $_POST['username']){
     $_SESSION['username'] = $user['username'];
     $_SESSION['userId'] = $user['id'];
+    $id = $user['id'];
     $nombre = $_POST['username'];
     $sql = "UPDATE `users` SET `ultimoLogin`='$current_time', `estatus`='Activo' WHERE `users`.`username`='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute(); 
+    $sql = "INSERT INTO `logs` (`userId`, `inicio`, `direccionIP`) VALUES('$id', '$current_time', '$ip')";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $sql = "SELECT LAST_INSERT_ID() FROM `logs`";
+    $statement = $connect->prepare($sql);
+    $statement->execute(); 
+    $log = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userLog'] = $log['LAST_INSERT_ID()'];
     header('Location: ../moduloDeSeguridad/vpPerfil.php');
 }
 

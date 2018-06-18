@@ -33,9 +33,38 @@ getDBConnection();
         <div class="container">
             <br>
             <h4>Bienvenido al Analisis</h4><br/>
-            <h5>Estos son los Analisis</h5>
+            <h5>Estos son los Analisis de Indicadores</h5>
             <?php
-            
+            $coonnect = getDBConnection();
+            $sql = "SELECT * FROM `indicadores` WHERE id = $id";
+            $statement = $connect->prepare($sql);
+            $statement->execute();
+            if($statement->rowCount() > 0) {
+                while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<p>Requerimiento: " . $row['requerimiento'] . "</p>";
+                    echo "<p>Requerimientos Nuevos: " . $row['reqNuevos'] . "</p>";
+                    echo "<p>Estado de Requerimiento: " . $row['estadoReq'] . "</p>";
+                    echo "<p>Eficiencia Requerimiento: " . $row['eficiencia'] . "</p>";
+                }
+            }
+            else {
+                echo "No hay Resultados de Analisis de Indicadores";
+            }
+            echo "<h5>Analisis de Proyecto</h5>";
+            $coonnect = getDBConnection();
+            $sql = "SELECT * FROM `observaciones`";
+            $statement = $connect->prepare($sql);
+            $statement->execute();
+            if($statement->rowCount() > 0) {
+                while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<p>Fecha Realizada: " . $row['fechaRealizada'] . "</p>";
+                    echo "<p>Quien la Realizo: " . $row['userId'] . "</p>";
+                    echo "<p>Observaciones: " . $row['observacion'] . "</p>";
+                }
+            }
+            else {
+                echo "No hay Resultados de Analisis de Proyectos";
+            }
             ?>
         </div>
     </body>
