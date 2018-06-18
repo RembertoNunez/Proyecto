@@ -1,4 +1,5 @@
 <?php
+// Se inicia Session y se incluye el file de connection a base de datos
 session_start();
 include '../functions/getConnection.php';
 ?>
@@ -37,11 +38,14 @@ include '../functions/getConnection.php';
             <h4>Bienvenido Administrador</h4><br><br>
             <h5>Estos son los Usuarios Activo</h5>
             <?php
+            // Connection con Base de Datos
             $connect = getDBConnection();
+            // Agarra todos los usuarios activos 
             $sql = "SELECT * FROM `users` WHERE estatus = 'Activo'";
             $statement = $connect->prepare($sql);
             $statement->execute();
             $i = 1;
+            // Enseña todos los usuarios activos al administrador
             if($statement->rowCount() > 0) {
                 while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo "<h5>$i</h5>";

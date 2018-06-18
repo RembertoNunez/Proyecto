@@ -71,6 +71,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
             // SQL code para agarrar informacion de la base de datos
             $connect = getDBConnection();
             $sql = "SELECT * FROM `users`";
+            // Crea una tabla con todos los usuarios
             if ($_GET['sort'] == 'nombre') {
                 $sql .= " ORDER BY nombre";
             }
@@ -120,6 +121,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre'])) {
                 echo "</table> <br/><br/>";
             }
             else {
+                // Si no hay informacion de usuarios
                 echo "0 resultados";
             }
             ?>

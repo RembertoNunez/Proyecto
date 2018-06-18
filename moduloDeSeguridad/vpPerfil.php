@@ -1,4 +1,5 @@
 <?php
+// Se inicia Session y se incluye el file de perfiles
 session_start();
 include '../functions/perfil.php';
 ?>
@@ -33,6 +34,7 @@ include '../functions/perfil.php';
             <h4>Bienvenido Vice Presidente</h4><br/>
             <h5>Su Perfil</h5>
             <?php
+            // Funcion para accesar el perfil del usuario
             perfil();
             ?>
             <p class='text-primary'>Algun Cambio Que Quiera Hacer Hable Con El Administrador</p>

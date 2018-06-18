@@ -8,6 +8,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
     $nombre = $_POST['nombre'];
     $estatus = $_POST['estatus'];
     $connect = getDBConnection();
+    // Selececiona todos los usuarios con ese nombre 
     $sql = "SELECT * FROM `users` WHERE nombre='$nombre';";
     $statement = $connect->prepare($sql);
     $statement->execute();
@@ -73,7 +74,9 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
         	</form><br>
             <h6 align="center">Usurarios</h6>
             <?php
+            // Sets a connection
             $connect = getDBConnection();
+            //Gets all the users
             $sql = "SELECT * FROM `users`";
             if ($_GET['sort'] == 'nombre') {
                 $sql .= " ORDER BY nombre";
@@ -95,6 +98,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
             }
             $statement = $connect->prepare($sql);
             $statement->execute();
+            // Crea una tabla con todos los usuarios
             if($statement->rowCount() > 0) {
                 echo "<table id='table' align='center'>";
                 echo "<tr class='table-dark' align='center'>";
@@ -117,6 +121,7 @@ if(isset($_POST['delete']) && !empty($_POST['nombre']) && $_POST['nombre'] != ""
                 echo "</table> <br/><br/>";
             }
             else {
+                // Si no hay usuarios 
                 echo "0 resultados";
             }
             ?>
